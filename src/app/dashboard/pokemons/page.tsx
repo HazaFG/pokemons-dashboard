@@ -1,6 +1,7 @@
-import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/app/pokemons";
+import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/pokemons";
 import { error } from "console";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 //Creamos nuestra funcion asincrona de JS, esta es la forma
 const getPokemons = async (
@@ -17,6 +18,7 @@ const getPokemons = async (
   }));
 
   // throw new Error("esto es un error que no deberia de suceder");
+  // throw notFound();
   // Un pedillo con la fecha xd
 
   return pokemons;
