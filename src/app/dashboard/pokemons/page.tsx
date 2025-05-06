@@ -17,6 +17,7 @@ const getPokemons = async (
   }));
 
   // throw new Error("esto es un error que no deberia de suceder");
+  // Un pedillo con la fecha xd
 
   return pokemons;
 };
