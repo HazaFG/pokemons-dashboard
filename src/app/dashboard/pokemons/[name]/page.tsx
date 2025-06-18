@@ -17,7 +17,9 @@ export async function generateStaticParams() {
     name: pokemon.name
   }))
 
-  return static151Pokemons;
+  return static151Pokemons.map(({ name }) => ({
+    name: name
+  }))
 }
 
 const getPokemonByName = async (name: string): Promise<Pokemon> => {
