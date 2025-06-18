@@ -18,8 +18,6 @@ export async function generateStaticParams() {
     id: id
   }))
 
-
-
   // return [
   //   { id: '1' },
   //   { id: '2' },
