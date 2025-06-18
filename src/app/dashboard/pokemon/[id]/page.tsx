@@ -1,23 +1,46 @@
 //Mira lo facil que es crear la ventana para cada pokemon, wow
-
+//
 import { Pokemon } from "@/pokemons";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
+
+//!build time, esto solo se va a ejecutar en el build time
+export async function generateStaticParams() {
+
+  const static151Pokemons = Array.from({ length: 151 }).map((v, i) => `${i + 1}`);
+
+  return static151Pokemons.map(id => ({
+    id: id
+  }))
+
+
+
+  // return [
+  //   { id: '1' },
+  //   { id: '2' },
+  //   { id: '3' },
+  //   { id: '4' },
+  //   { id: '5' },
+  //   { id: '6' },
+  // ]
+}
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { id, name } = await getPokemon(params.id);
+    const { id, name } = await getPokemon((await params).id);
 
     return {
       title: `#${id} - ${name}`,
       description: "Pagina del pokemon ${name}",
     };
   } catch (error) {
+    console.log(error)
     return {
       title: "Pagina del Pokemon",
     };
@@ -28,13 +51,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const getPokemon = async (id: string): Promise<Pokemon> => {
   try {
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      cache: "force-cache", // TODO: cambiar esto en un futuro
-    }).then((resp) => resp.json());
+      // cache: "force-cache", 
+      next: { revalidate: 60 * 60 * 30 * 6 }
+    })
+      .then((resp) => resp.json());
 
     console.log("Cargando a :", pokemon.name);
 
     return pokemon;
   } catch (error) {
+    console.log(error)
     notFound();
   }
 };
@@ -42,7 +68,7 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 export default async function PokemonPage({ params }: Props) {
   //   console.log({ params });
 
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon((await params).id);
 
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">

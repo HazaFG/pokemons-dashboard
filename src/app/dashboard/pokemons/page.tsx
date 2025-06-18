@@ -1,9 +1,7 @@
 import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/pokemons";
 
 //Creamos nuestra funcion asincrona de JS, esta es la forma
-const getPokemons = async (
-  limit = 20, //Estos son parametros bro
-  offset = 0 //Este tambien
+const getPokemons = async (limit = 20, offset = 0 //Este tambien
 ): Promise<SimplePokemon[]> => {
   const dataPostman: PokemonsResponse = await fetch(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}limit&offset=${offset}`
