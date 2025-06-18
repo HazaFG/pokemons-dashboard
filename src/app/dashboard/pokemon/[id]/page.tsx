@@ -9,7 +9,7 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
-//!build time, esto solo se va a ejecutar en el build time
+// //!build time, esto solo se va a ejecutar en el build time
 export async function generateStaticParams() {
 
   const static151Pokemons = Array.from({ length: 151 }).map((v, i) => `${i + 1}`);
@@ -17,15 +17,6 @@ export async function generateStaticParams() {
   return static151Pokemons.map(id => ({
     id: id
   }))
-
-  // return [
-  //   { id: '1' },
-  //   { id: '2' },
-  //   { id: '3' },
-  //   { id: '4' },
-  //   { id: '5' },
-  //   { id: '6' },
-  // ]
 }
 
 

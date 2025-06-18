@@ -1,10 +1,23 @@
 import Image from 'next/image'
-import { Pokemon } from "@/pokemons";
+import { Pokemon, PokemonsResponse } from "@/pokemons";
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
 
 interface Props {
   params: Promise<{ name: string }>;
+}
+
+
+//!build time, esto solo se va a ejecutar en el build time
+export async function generateStaticParams() {
+  const data: PokemonsResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+    .then((res) => res.json())
+
+  const static151Pokemons = data.results.map(pokemon => ({
+    name: pokemon.name
+  }))
+
+  return static151Pokemons;
 }
 
 const getPokemonByName = async (name: string): Promise<Pokemon> => {
