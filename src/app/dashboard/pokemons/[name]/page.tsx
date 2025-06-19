@@ -8,7 +8,7 @@ interface Props {
 }
 
 
-//!build time, esto solo se va a ejecutar en el build time
+//!build time, esto solo se va a ejecutar en el build time, esto es la generacion estatica, muy interesante
 export async function generateStaticParams() {
   const data: PokemonsResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((res) => res.json())
