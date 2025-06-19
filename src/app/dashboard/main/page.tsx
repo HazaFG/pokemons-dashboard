@@ -1,5 +1,12 @@
 import { SimpleWidget } from "@/components/SimpleWidget";
 import React from "react";
+import type { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Pagina principal",
+  description: "Pagina principal pokemones",
+};
 
 export default function MainPage() {
   return (
@@ -9,9 +16,6 @@ export default function MainPage() {
 
 
       <div className="flex flex-wrap p-2 items-center justify-center">
-        <SimpleWidget />
-        <SimpleWidget />
-        <SimpleWidget />
         <SimpleWidget />
       </div>
     </div>
