@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components";
+import { Sidebar } from "../components/sidebar/Sidebar";
 import Link from "next/link";
 
 export default function NotFound() {

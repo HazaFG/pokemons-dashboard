@@ -1,4 +1,4 @@
-import { SimpleWidget } from "@/components/SimpleWidget";
+import { SimpleWidget } from "@/components/dashboard/SimpleWidget";
 import React from "react";
 import type { Metadata } from "next";
 
