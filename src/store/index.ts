@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counter/counterSlice'
+import counterSlice from './counter/counterSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    // counter, es lo que vas a usar en el componente de cartCounter, con esta funcion
+    //const count = useAppSelector(state => state.counter.count)
+    contador: counterSlice,
   },
 })
 

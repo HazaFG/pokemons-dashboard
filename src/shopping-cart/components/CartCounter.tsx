@@ -21,9 +21,26 @@ const getApiCounter = async (): Promise<CounterResponse> => {
 
 export const CartCounter = () => {
 
-  const count = useAppSelector(state => state.counter.count)
+  //contador = nombre que le pusiste al slice en index.ts 
+  //state viene de initialState en counterSlice.ts
+  //count viene de counterSlice.ts tambien, y es esta interface: 
+  //
+  // interface CounterState {
+  //   count: number;
+  //   isReady: boolean;
+  // }
+  // 
+  const count = useAppSelector(state => state.contador.count)
+
+  //Tambien esta esta manera de verlo si se te hace mas facil sin la arrow function
+  // const count = useAppSelector(function(state) {
+  //   return state.contador.count;
+  // });
+
+
   const dispatch = useAppDispatch();
 
+  // que te sirva este ejemplo de como antes solamente cambiabas el valor del counter usando el value de Props
   // useEffect(() => {
   //   dispatch(initCounterState(value))
   // }, [dispatch, value])
@@ -53,7 +70,6 @@ export const CartCounter = () => {
           +1
         </button>
         <button
-          //Manera pro de hacerlo xd
           onClick={() => dispatch(substractOne())}
           className="flex items-center justify-center p-2 rounded-xl bg-gray-900 text-white hover:bg-gray-600 transtition-all w-[100px] mr-2"
         >

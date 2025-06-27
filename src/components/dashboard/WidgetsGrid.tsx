@@ -5,7 +5,7 @@ import { SimpleWidget } from "./SimpleWidget"
 import { IoCartOutline } from "react-icons/io5"
 
 export const WidgetsGrid = () => {
-  const isCart = useAppSelector(state => state.counter.count)
+  const isCart = useAppSelector(state => state.contador.count)
 
   return (
     <>
