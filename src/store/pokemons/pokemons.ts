@@ -17,6 +17,7 @@ interface PokemonsState {
 }
 
 const initialState: PokemonsState = {
+  //como dato curioso, ten en cuenta que aqui, estas poniendo que este pokemon especificamente lo estas haciendo uno de tus favoritos
   '1': { id: '1', name: 'bulbasaur' },
 };
 

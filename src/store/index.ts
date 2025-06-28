@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from './counter/counterSlice'
+import pokemons from './pokemons/pokemons'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const store = configureStore({
   reducer: {
-    // counter, es lo que vas a usar en el componente de cartCounter, con esta funcion
-    //const count = useAppSelector(state => state.counter.count)
+    // contador, es lo que vas a usar en el componente de cartCounter, con esta funcion
+    //const count = useAppSelector(state => state.contador.count)
     contador: counterSlice,
+    pokemons: pokemons,
   },
 })
 
