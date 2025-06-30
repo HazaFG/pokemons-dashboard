@@ -5,7 +5,8 @@ import React from "react";
 import { SimplePokemon } from "../interfaces/simple-pokemon";
 import Image from "next/image";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import { useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { toggleFavorite } from "@/store/pokemons/pokemons";
 
 interface Props {
   pokemon: SimplePokemon;
@@ -17,7 +18,16 @@ export const PokemonCard = ({ pokemon }: Props) => {
   //vamos a implementar la funcion de favoritos con redux, apunta:
   //                                esto ya por si, se trae los pokemones
   const isFavorite = useAppSelector(state => state.pokemons[id] != undefined)
-  console.log({ isFavorite })
+
+  const dispatch = useAppDispatch()
+
+  const onToggle = () => {
+    // console.log('click', { pokemon })
+    dispatch(toggleFavorite(pokemon))
+  }
+
+  //muy util, si necesitas recordar algo descomentalo, es para ver los booleanos
+  // console.log({ isFavorite })
 
   return (
     <div className="mx-auto right-0 mt-2 w-60">
@@ -32,7 +42,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
             priority={false}
           />
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">
-            {name}
+            {pokemon.name}
           </p>
           <p className="text-sm text-gray-100">John@Doe.com</p>
           <div className="mt-5">
@@ -45,10 +55,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
           </div>
         </div>
         <div className="border-b">
-          <Link
-            href="/dashboard/main"
-            className="px-4 py-2 hover:bg-gray-100 flex items-center"
-          >
+          <div onClick={onToggle} className="cursor-pointer px-4 py-2 flex items-center hover:bg-gray-100">
             <div className="text-red-600">
               {
                 isFavorite
@@ -58,13 +65,17 @@ export const PokemonCard = ({ pokemon }: Props) => {
             </div>
             <div className="pl-3">
               <p className="text-sm font-medium text-gray-800 leading-none">
-                No es favorito
+                {
+                  isFavorite
+                    ? 'Ya es favorito'
+                    : 'No es favorito'
+                }
               </p>
               <p className="text-xs text-gray-500">View your campaigns</p>
             </div>
-          </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
