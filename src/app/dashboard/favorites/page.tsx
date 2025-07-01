@@ -12,7 +12,6 @@ export default async function FavoritesPage() {
         Listado de Pokemones <small className="text-blue-500">Favoritos</small>
       </span>
       <PokemonFavorite />
-
     </div>
   );
 }
