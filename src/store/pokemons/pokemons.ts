@@ -21,7 +21,7 @@ const initialState: PokemonsState = {
   //como dato curioso, ten en cuenta que aqui, estas poniendo que este pokemon especificamente lo estas haciendo uno de tus favoritos
   //AHORA LEE ESTO, este id '1' se va a borrar de los favoritos jiji
   '1': { id: '1', name: 'bulbasaur' },
-  '2': { id: '1', name: 'bulbasaur' },
+  '2': { id: '2', name: 'Ivysaur' },
 };
 
 const pokemonSlice = createSlice({
