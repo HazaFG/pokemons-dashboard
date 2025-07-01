@@ -13,7 +13,7 @@ export const PokemonFavorite = () => {
   return (
     <>
       {
-        pokemonesFavoritos.length === 0 ? <PokemonGrid pokemons={pokemones} /> : <NoFavorites />
+        pokemonesFavoritos.length ? <PokemonGrid pokemons={pokemones} /> : <NoFavorites />
       }
     </>
   )
