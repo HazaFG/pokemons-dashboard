@@ -6,9 +6,12 @@ import { PokemonGrid } from "./PokemonGrid";
 import { useState } from "react";
 
 export const PokemonFavorite = () => {
-  const pokemonesFavoritos = useAppSelector(state => Object.values(state.pokemons))
-  const [pokemones, setPokemones] = useState(pokemonesFavoritos)
-  console.log(pokemonesFavoritos)
+  const pokemonesFavoritos = useAppSelector(state => Object.values(state.pokemons.favorites))
+  const [pokemones] = useState(Object.values(pokemonesFavoritos))
+
+  // useEffect(() => {
+  //   setPokemons(Object.values(pokemonesFavoritos))
+  // }, [pokemonesFavoritos])
 
   return (
     <>

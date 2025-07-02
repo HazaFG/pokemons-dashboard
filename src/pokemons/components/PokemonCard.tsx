@@ -17,7 +17,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
 
   //vamos a implementar la funcion de favoritos con redux, apunta:
   //                                esto ya por si, se trae los pokemones
-  const isFavorite = useAppSelector(state => state.pokemons[id] != undefined)
+  const isFavorite = useAppSelector(state => state.pokemons.favorites[id] != undefined)
 
   const dispatch = useAppDispatch()
 
